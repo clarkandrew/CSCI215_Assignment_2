@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var endInput = false;
+            var numArray = [];
+
+
+
+            var max = ["max", 0];
+            var min = ["min", 0];
+            var mean = ["mean", 0];
+            var median = ["median", 0];
+            var countOdd = ["countOdd", 0];
+            var countEven = ["countEven", 0];
+            var countPrime = ["countPrime", 0];
+            var countPower = ["countPower", 0];
+
+
+            //calculating values
+            var total = 0;
+
+            function isPrime(num) {
+                for (var i = 2; i < num; i++)
+                    if (num % i === 0) return false;
+                return num !== 1;
+            }
+
+            while (endInput != true) {
+                var input = prompt("Enter a set of numbers. When finished enter -1", "");
+                if (input != -1) {
+                    min[1] = input;
+                    numArray.push(input);
+                } else {
+                    endInput = true;
+                    console.log(numArray);
+
+
+
+
+
+
+
+                    // Calc Values ------------------------------------------------------
+
+                    for (var i = 0; i < numArray.length; i++) {
+                        var currNumber = numArray[i];
+                        total = total + parseInt(currNumber);
+
+                        //max
+                        if (currNumber > max[1]) {
+                            max[1] = currNumber;
+                        }
+
+                        //max
+                        if (currNumber < min[1]) {
+                            min[1] = currNumber;
+                        }
+
+                        if (currNumber % 2 == 0) {
+                            //even
+                            countEven[1] = countEven[1] + 1;
+                        } else {
+                            //odd
+                            countOdd[1] = countOdd[1] + 1;
+                        }
+
+                        //prime
+                        if (isPrime(currNumber)) {
+                            countPrime[1] = countPrime[1] + 1;
+                        }
+                        
+                        //power of 2
+                        if(Math.log2(currNumber) % 1 === 0) {
+                            countPower[1] = countPower[1] + 1;
+                        }
+
+                    }
+                    
+                   
+                    mean[1] = Math.round(total / numArray.length);
+                    numArray.sort();
+                    var midNum = Math.floor(numArray.length / 2);
+                    if(numArray.length % 2 == 0) {
+                        alert(midNum + " - " +numArray[midNum] );
+                        median[1] = (parseInt(numArray[midNum -1]) + parseInt(numArray[midNum ])) / 2;
+                    } else {
+                        
+                        median[1] = numArray[midNum];
+                        
+                    }
+                    // ------------------------------------------------------------------
+                    document.getElementById("allNum").innerHTML = "[ " + numArray + " ]";
+                    document.getElementById(max[0]).innerHTML = max[1];
+                    document.getElementById(min[0]).innerHTML = min[1];
+                    document.getElementById(mean[0]).innerHTML = mean[1];
+                    document.getElementById(median[0]).innerHTML = median[1];
+                    document.getElementById(countOdd[0]).innerHTML = countOdd[1];
+                    document.getElementById(countEven[0]).innerHTML = countEven[1];
+                    document.getElementById(countPrime[0]).innerHTML = countPrime[1];                    
+                    document.getElementById(countPower[0]).innerHTML = countPower[1];
+
+                    
+                    
+
+                }
+            }
+
+        });
+    </script>
+
+
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 450px;
+        }
+        
+        th {
+            text-align: left;
+        }
+    </style>
+
+
+</head>
+
+<body>
+<center>
+    <t id="allNum"></t><br><br>
+    <table>
+        <tr>
+            <th>Maximum:</th>
+            <td id='max'>-</td>
+        </tr>
+        <tr>
+            <th>Minimum:</th>
+            <td id='min'>-</td>
+        </tr>
+        <tr>
+            <th>Mean:</th>
+            <td id='mean'>-</td>
+        </tr>
+
+        <tr>
+            <th>Median:</th>
+            <td id='median'>-</td>
+        </tr>
+        <tr>
+            <th>Number of even numbers:</th>
+            <td id='countEven'>-</td>
+        </tr>
+        <tr>
+            <th>Number of odd numbers:</th>
+            <td id='countOdd'>-</td>
+        </tr>
+        <tr>
+            <th>Number of prime numbers:</th>
+            <td id='countPrime'>-</td>
+        </tr>
+        <tr>
+            <th>Number of power-of-2 numbers:</th>
+            <td id='countPower'>-</td>
+        </tr>
+    </table>
+
+</center>
+</body>
+
+</html>

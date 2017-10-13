@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link res="stylesheet" type="text/css" href="style/style.css">
+
+
+    <script>
+        function process() {
+            var inputText = document.getElementById("inputText").value;
+            var outputResult = "";
+            inputText = inputText.split('   ').join(' + ');
+            inputText = inputText.split(" ");
+
+            for (var i = 0; i < inputText.length; i++) {
+                var currText = inputText[i];
+
+                if (currText == '.-') {
+                    outputResult = outputResult + "A";
+                } else if (currText == '-...') {
+                    outputResult = outputResult + "B";
+                } else if (currText == '-.-.') {
+                    outputResult = outputResult + "C";
+                } else if (currText == '-..') {
+                    outputResult = outputResult + "D";
+                } else if (currText == '.') {
+                    outputResult = outputResult + "E";
+                } else if (currText == '..-.') {
+                    outputResult = outputResult + "F";
+                } else if (currText == '--.') {
+                    outputResult = outputResult + "G";
+                } else if (currText == '....') {
+                    outputResult = outputResult + "H";
+                } else if (currText == '..') {
+                    outputResult = outputResult + "I";
+                } else if (currText == '.---') {
+                    outputResult = outputResult + "J";
+                } else if (currText == '-.-') {
+                    outputResult = outputResult + "K";
+                } else if (currText == '.-..') {
+                    outputResult = outputResult + "L";
+                } else if (currText == '--') {
+                    outputResult = outputResult + "M";
+                } else if (currText == '-.') {
+                    outputResult = outputResult + "N";
+                } else if (currText == '---') {
+                    outputResult = outputResult + "O";
+                } else if (currText == '.--.') {
+                    outputResult = outputResult + "P";
+                } else if (currText == '--.-') {
+                    outputResult = outputResult + "Q";
+                } else if (currText == '.-.') {
+                    outputResult = outputResult + "R";
+                } else if (currText == '...') {
+                    outputResult = outputResult + "S";
+                } else if (currText == '-') {
+                    outputResult = outputResult + "T";
+                } else if (currText == '..-') {
+                    outputResult = outputResult + "U";
+                } else if (currText == '...-') {
+                    outputResult = outputResult + "V";
+                } else if (currText == '.--') {
+                    outputResult = outputResult + "W";
+                } else if (currText == '-..-') {
+                    outputResult = outputResult + "X";
+                } else if (currText == '-.--') {
+                    outputResult = outputResult + "Y";
+                } else if (currText == '--..') {
+                    outputResult = outputResult + "Z";
+                } else {
+                    outputResult = outputResult + " ";
+                }
+
+            }
+            document.getElementById("output").innerHTML = outputResult;
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <center>
+
+        <div ><input id="inputText" style="line-height: 15px;font-size:15px;width:400px;text-align: center;" value="-.-. --- ..-. -.-.     .-. --- -.-. -.- ..."></div>
+        <br>
+        <button onclick="process()">Process Text</button>
+        <br>
+        <br>
+        <div id="output">OUTPUT</div>
+        <br>
+
+    </center>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <script>
+        function process() {
+            var inputText = document.getElementById("inputText").value;
+            var outputResult = "";
+            inputText = inputText.toUpperCase();
+            inputText = inputText.replace(/\./g, "");
+            inputText = inputText.split(" ");
+            for (var i = 0; i < inputText.length; i++) {
+                var currentWord = inputText[i];
+                var wordCount = 0;
+                for (var x = 0; x < inputText.length; x++) {
+
+                    if (inputText[x] == currentWord && !outputResult.includes(currentWord)) {
+                        wordCount = wordCount + 1;
+                    }
+                }
+                if (!outputResult.includes(currentWord)) {
+                    outputResult = outputResult + currentWord + " -> " + wordCount + " <br> ";
+                }
+            }
+            document.getElementById("output").innerHTML = outputResult;
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <center>
+         <div ><input id="inputText" style="line-height: 15px;font-size:15px;width:400px;text-align: center;" value="The cat ate the bird. The Bird ate the Dog. The dog ate the cat."></div>
+
+        <br>
+        <button onclick="process()">Process Text</button>
+        <br>
+        <br>
+        <div id="output">OUTPUT</div>
+        <br>
+
+    </center>
+</body>
+
+</html>

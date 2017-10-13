@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <script>
+        function process() {
+            var inputText = document.getElementById("inputText").value;
+            var outputResult = "frown.jpg";
+            var totalCheck = true;
+            
+            var atFound = inputText.includes("@");
+            var dotFound = inputText.includes("@");
+            
+            if (atFound == true) {
+                
+            } else {
+            totalCheck = false;    
+            }
+            
+            if (dotFound == true) {
+                
+                
+            } else {
+                totalCheck = false;
+            }
+            
+            
+            if(totalCheck) {
+                outputResult = "smile.png";
+            }
+            
+            var outputImg = document.getElementById("output");
+            outputImg.setAttribute("src","imgs/" + outputResult);
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <center>
+         <div ><input id="inputText" style="line-height: 15px;font-size:15px;width:400px;text-align: center;" value="unbolts@gmail.com"></div>
+
+        <br>
+        <button onclick="process()">Process Text</button>
+        <br>
+        <br>
+        <img id="output" src="">
+        <br>
+
+    </center>
+</body>
+
+</html>
