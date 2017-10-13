@@ -7,32 +7,57 @@
     <script>
         function process() {
             var inputText = document.getElementById("inputText").value;
+            var splitFront = inputText.split("@");
+            var splitBack = splitFront[1].split(".");
             var outputResult = "frown.jpg";
             var totalCheck = true;
+
+            var dotFound = inputText.includes(".");
+            var atCount = 0;
             
-            var atFound = inputText.includes("@");
-            var dotFound = inputText.includes("@");
-            
-            if (atFound == true) {
-                
-            } else {
-            totalCheck = false;    
-            }
-            
+            var beforeAt = "";
+            var beforeDot = "";
+            var afterDot = "";
+
             if (dotFound == true) {
+
+                for(var i = 0; i < inputText.length;i++) {
+                    if(inputText[i] == "@") {
+                        atCount = atCount + 1;
+                    }
+                }
                 
-                
+                if (atCount == "1") {
+                    
+                    beforeAt = splitFront[0];
+                    beforeDot = splitBack[0];
+                    afterDot = splitBack[1];
+                     console.log(beforeAt);
+                        console.log(beforeDot);
+                        console.log(afterDot);
+                    
+                    if(beforeAt.length < 1 || beforeDot.length < 1 || afterDot.length < 1) {
+                        totalCheck = false;
+                       console.log("false");
+                    } else {
+                         console.log("else");
+                    }
+                    
+                }
+              
             } else {
                 totalCheck = false;
             }
-            
-            
-            if(totalCheck) {
+
+
+
+
+            if (totalCheck) {
                 outputResult = "smile.png";
             }
-            
+
             var outputImg = document.getElementById("output");
-            outputImg.setAttribute("src","imgs/" + outputResult);
+            outputImg.setAttribute("src", "imgs/" + outputResult);
 
         }
     </script>
@@ -42,13 +67,15 @@
 
 <body>
     <center>
-         <div ><input id="inputText" style="line-height: 15px;font-size:15px;width:400px;text-align: center;" value="unbolts@gmail.com"></div>
+        <div>
+            <input id="inputText" style="line-height: 15px;font-size:15px;width:400px;text-align: center;" value="unbolts@gmail.com">
+        </div>
 
         <br>
         <button onclick="process()">Process Text</button>
         <br>
         <br>
-        <img id="output" src="">
+        <img id="output" width="100px" src="">
         <br>
 
     </center>
